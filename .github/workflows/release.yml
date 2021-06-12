@@ -28,18 +28,15 @@ jobs:
 
       - name: Build go binary for nsutil
         run : ./../../build/go-multiarch-build.sh "go build -o ./../../build/_output/nsutil-linux"
-        with:
-          working-directory: custom/nsutil
+        working-directory: custom/nsutil
 
       - name: Build go binary for promql-cli
         run : ./../../build/go-multiarch-build.sh "go build -o ./../../build/_output/promql-linux"
-        with:
-          working-directory: custom/promql-cli 
+        working-directory: custom/promql-cli 
           
       - name: Build go binary for dns_interceptor
         run : go build -o ./../../build/_output/dns_interceptor
-        with:
-          working-directory: custom/dns_interceptor
+        working-directory: custom/dns_interceptor
       
       - name: create release along with artifact
         uses: ncipollo/release-action@v1
