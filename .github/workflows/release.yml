@@ -31,8 +31,9 @@ jobs:
         working-directory: custom/nsutil
 
       - name: Build go binary for promql-cli
-        run : ./../../build/go-multiarch-build.sh "go build -o ./../../build/_output/promql-linux"
-        working-directory: custom/promql-cli 
+        run : |
+          cp custom/promql-cli/promql-linux-amd64 build/_output/
+          cp custom/promql-cli/promql-linux-arm64 build/_output/
           
       - name: Build go binary for dns_interceptor
         run : go build -o ./../../build/_output/dns_interceptor
