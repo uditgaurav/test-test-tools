@@ -33,6 +33,7 @@ jobs:
   changes:
     runs-on: ubuntu-latest
     # Set job outputs to values from filter step
+    # this is done to run the selective jobs based on the code change
     outputs:
       forkbomb: ${{ steps.filter.outputs.forkbomb }}
       fio: ${{ steps.filter.outputs.fio }}
