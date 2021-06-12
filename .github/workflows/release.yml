@@ -24,8 +24,7 @@ jobs:
 
       - name: Build go binary for pause
         run : ./../../build/go-multiarch-build.sh "go build -o ./../../build/_output/pause-linux"
-        with:
-          working-directory: custom/pause
+        working-directory: custom/pause
 
       - name: Build go binary for nsutil
         run : ./../../build/go-multiarch-build.sh "go build -o ./../../build/_output/nsutil-linux"
