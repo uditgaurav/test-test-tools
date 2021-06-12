@@ -1,3 +1,3 @@
-module github.com/litmuschaos/test-tools/custom/pause
+module github.com/custom/pause
 
-go 1.14
+go 1.13
