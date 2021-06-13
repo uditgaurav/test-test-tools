@@ -1,1 +1,2 @@
-FROM argoproj/argocli:v2.9.3
+FROM --platform=$TARGETPLATFORM argoproj/argocli:v2.9.3
+ARG TARGETPLATFORM

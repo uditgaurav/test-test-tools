@@ -1,14 +1,11 @@
 #!/bin/bash
 set -e
 
-IMAGEID=$( docker images -q uditgaurav/litmus-checker )
-
 if [ ! -z "${DNAME}" ] && [ ! -z "${DPASS}" ];
 then
   docker login -u "${DNAME}" -p "${DPASS}";
   #Push to docker hub repository with latest tag
-  docker tag ${IMAGEID} uditgaurav/litmus-checker:latest
-  docker push uditgaurav/litmus-checker:latest;
+  docker buildx build . --file custom/litmus-checker/Dockerfile --progress plane --push --no-cache --platform linux/amd64,linux/arm64 --tag uditgaurav/litmus-checker:latest
 else
   echo "No docker credentials provided. Skip uploading uditgaurav/litmus-checker:latest to docker hub";
 fi;
