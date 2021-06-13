@@ -344,3 +344,14 @@ experiment-go-binary:
 	@echo "--> Build experiment go binary" 
 	@echo "------------------"
 	@sh build/generate_go_binary
+
+.PHONY: docker.buildx
+docker.buildx:
+	@echo "------------------------------"
+	@echo "--> Setting up Builder        " 
+	@echo "------------------------------"
+	@if ! docker buildx ls | grep -q multibuilder; then\
+		docker buildx create --name multibuilder;\
+		docker buildx inspect multibuilder --bootstrap;\
+		docker buildx use multibuilder;\
+	fi
