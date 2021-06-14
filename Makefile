@@ -298,7 +298,7 @@ litmus-k8s: deps _build_litmus_k8s _push_litmus_k8s
 
 _build_litmus_argocli:
 	@echo "INFO: Building container image for litmuschaos/argocli"
-	cd custom/argo-server && docker build -t litmuschaos/argocli . --build-arg TARGETARCH=amd64
+	cd custom/argo-server && docker build -t litmuschaos/argocli . --build-arg TARGETPLATFORM=linux/amd64
 
 _push_litmus_argocli:
 	@echo "INFO: Publish container litmuschaos/argocli"
@@ -308,7 +308,7 @@ litmus-argocli: deps _build_litmus_argocli _push_litmus_argocli
 
 _build_litmus_argo_workflow_controller:
 	@echo "INFO: Building container image for litmuschaos/workflow-controller"
-	cd custom/argo-workflow-controller && docker build -t litmuschaos/workflow-controller . --build-arg TARGETARCH=amd64
+	cd custom/argo-workflow-controller && docker build -t litmuschaos/workflow-controller . --build-arg TARGETPLATFORM=linux/amd64
 
 _push_litmus_argo_workflow_controller:
 	@echo "INFO: Publish container litmuschaos/workflow-controller"
@@ -318,7 +318,7 @@ litmus-argo-workflow-controller: deps _build_litmus_argo_workflow_controller _pu
 
 _build_litmus_argo_workflow_executor:
 	@echo "INFO: Building container image for litmuschaos/argoexec"
-	cd custom/argo-workflow-executor && docker build -t litmuschaos/argoexec . --build-arg TARGETARCH=amd64
+	cd custom/argo-workflow-executor && docker build -t litmuschaos/argoexec . --build-arg TARGETPLATFORM=linux/amd64
 
 _push_litmus_argo_workflow_executor:
 	@echo "INFO: Publish container litmuschaos/argoexec"
@@ -328,7 +328,7 @@ litmus-argo-workflow-executor: deps _build_litmus_argo_workflow_executor _push_l
 
 _build_litmus_mongo:
 	@echo "INFO: Building container image for litmuschaos/mongo"
-	cd custom/mongo && docker build -t litmuschaos/mongo . --build-arg TARGETARCH=amd64
+	cd custom/mongo && docker build -t litmuschaos/mongo . --build-arg TARGETPLATFORM=linux/amd64
 
 _push_litmus_mongo:
 	@echo "INFO: Publish container litmuschaos/mongo"
