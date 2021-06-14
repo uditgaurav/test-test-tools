@@ -271,7 +271,7 @@ _build_litmus_qps_cmd:
 
 _push_litmus_qps_cmd:
 	@echo "INFO: Publish container litmuschaos/litmus-qps-cmd"
-	cd custom/workflow-helper/app-qps-test/buildscripts && ./push
+	cd custom/workflow-helper/app-qps-test && ./buildscripts/push
 
 litmus-qps-cmd: deps _build_litmus_qps_cmd _push_litmus_qps_cmd
 
