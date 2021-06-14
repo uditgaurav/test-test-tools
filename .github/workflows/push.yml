@@ -147,7 +147,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Building litmus-qps-cmd image
-        run: make litmus-qps-cmd
+        run: make _push_litmus_qps_cmd
 
   litmus-checker:
     runs-on: ubuntu-latest
