@@ -165,7 +165,7 @@ jobs:
       - name: Building litmus-checker image
         run: |
           make docker.buildx
-          make litmus-checker
+          make _push_litmus_checker
 
   litmus-git-app-checker:
     runs-on: ubuntu-latest
