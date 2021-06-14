@@ -211,8 +211,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Building litmus-argocli image
-        run: |
-          make docker.buildx
+        run: 
           make litmus-argocli
 
   litmus-argo-workflow-controller:
@@ -225,8 +224,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
                     
       - name: Building workflow-controller image
-        run: |
-          make docker.buildx
+        run: 
           make litmus-argo-workflow-controller
 
   litmus-argo-workflow-executor:
@@ -239,8 +237,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Building argoexec image
-        run: |
-          make docker.buildx
+        run: 
           make litmus-argo-workflow-executor
 
   mongo:
