@@ -146,8 +146,17 @@ jobs:
     if: needs.changes.outputs.litmus-qps-cmd == 'true'
     steps:
       - uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: latest
+
       - name: Building litmus-qps-cmd image
-        run: make _push_litmus_qps_cmd
+        run: |
+          make docker.buildx
+          make _push_litmus_qps_cmd
 
   litmus-checker:
     runs-on: ubuntu-latest
