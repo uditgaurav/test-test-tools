@@ -1,2 +1,2 @@
-FROM --platform=$BUILDPLATFORM argoproj/workflow-controller:v2.9.3
-ARG BUILDPLATFORM
+FROM --platform=$TARGETPLATFORM argoproj/workflow-controller:v2.9.3
+ARG TARGETPLATFORM=linux/amd64

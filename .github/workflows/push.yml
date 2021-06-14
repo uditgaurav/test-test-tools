@@ -128,8 +128,17 @@ jobs:
     if: needs.changes.outputs.litmus-app-deployer == 'true'
     steps:
       - uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: latest
+
       - name: Building litmus-app-deployer image
-        run: make litmus-app-deployer
+        run: |
+          make docker.buildx
+          make _push_litmus_app_deployer
 
   litmus-qps-cmd:
     runs-on: ubuntu-latest
@@ -137,8 +146,17 @@ jobs:
     if: needs.changes.outputs.litmus-qps-cmd == 'true'
     steps:
       - uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: latest
+
       - name: Building litmus-qps-cmd image
-        run: make litmus-qps-cmd
+        run: |
+          make docker.buildx
+          make _push_litmus_qps_cmd
 
   litmus-checker:
     runs-on: ubuntu-latest
@@ -146,8 +164,17 @@ jobs:
     if: needs.changes.outputs.litmus-checker == 'true'
     steps:
       - uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: latest
+
       - name: Building litmus-checker image
-        run: make litmus-checker
+        run: |
+          make docker.buildx
+          make _push_litmus_checker
 
   litmus-git-app-checker:
     runs-on: ubuntu-latest
@@ -191,8 +218,19 @@ jobs:
     if: needs.changes.outputs.litmus-argocli == 'true'
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: latest
+
       - name: Building litmus-argocli image
-        run: make litmus-argocli
+        run: |
+          make docker.buildx
+          make _push_litmus_argocli
 
   litmus-argo-workflow-controller:
     runs-on: ubuntu-latest
@@ -200,8 +238,19 @@ jobs:
     if: needs.changes.outputs.workflow-controller == 'true'
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: latest
+                    
       - name: Building workflow-controller image
-        run: make litmus-argo-workflow-controller
+        run: |
+          make docker.buildx
+          make _push_litmus_argo_workflow_controller
 
   litmus-argo-workflow-executor:
     runs-on: ubuntu-latest
@@ -209,8 +258,19 @@ jobs:
     if: needs.changes.outputs.argoexec == 'true'
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: latest
+
       - name: Building argoexec image
-        run: make litmus-argo-workflow-executor
+        run: |
+          make docker.buildx
+          make _push_litmus_argo_workflow_executor
 
   mongo:
     runs-on: ubuntu-latest
@@ -218,8 +278,19 @@ jobs:
     if: needs.changes.outputs.mongo == 'true'
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+        with:
+          version: latest
+
       - name: Building mongo image
-        run: make mongo
+        run: |
+          make docker.buildx
+          make _push_litmus_mongo
 
   mysql-client:
     runs-on: ubuntu-latest
