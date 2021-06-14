@@ -211,7 +211,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Building litmus-argocli image
-        run: make litmus-argocli
+        run: 
+          make litmus-argocli
 
   litmus-argo-workflow-controller:
     runs-on: ubuntu-latest
@@ -223,7 +224,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
                     
       - name: Building workflow-controller image
-        run: make litmus-argo-workflow-controller
+        run: 
+          make litmus-argo-workflow-controller
 
   litmus-argo-workflow-executor:
     runs-on: ubuntu-latest
@@ -235,7 +237,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Building argoexec image
-        run: make litmus-argo-workflow-executor
+        run: 
+          make litmus-argo-workflow-executor
 
   mongo:
     runs-on: ubuntu-latest
