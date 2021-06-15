@@ -136,7 +136,7 @@ custom-client: deps _build_tests_custom_client_image _push_tests_custom_client_i
 
 _build_litmus_checker:
 	@echo "INFO: Building container image for litmus-checker"
-	cd custom/litmus-checker && docker build -t uditgaurav/litmus-checker .
+	cd custom/litmus-checker && docker build -t litmuschaos/litmus-checker .
 
 _push_litmus_checker:
 	@echo "INFO: Publish container litmuschaos/litmus-checker"
