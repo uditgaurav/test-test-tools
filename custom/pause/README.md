@@ -1,7 +1,7 @@
 # Pause
 
-Pause is a cli tool that can be used to begin a commands in paused state. It helps to perform some operations before the actual command 
-execution like loading `cgroup`. 
+Pause is a CLI tool that can be used to begin a command in paused state. It usually helps in performing some operations before the command is actually executed. 
+For example, actions like loading `cgroup`.
 
 ## Usage
 
