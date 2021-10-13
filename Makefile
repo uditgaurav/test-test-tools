@@ -367,7 +367,7 @@ litmus-kafka-deployer: deps _build_litmus_kafka_deployer _push_litmus_kafka_depl
 
 _build_litmus_experiment_hardened_alpine:
 	@echo "INFO: Building container image for litmuschaos/experiment-alpine:latest"
-	cd custom/hardened-alpine/experiment/ && docker build -t litmuschaos/experiment-alpine:latest . --build-arg TARGETARCH=amd64
+	cd custom/hardened-alpine/experiment/ && docker build -t litmuschaos/experiment-alpine:latest . --build-arg TARGETARCH=amd64 --build-arg LITMUS_VERSION=1.13.8
 
 _push_litmus_experiment_hardened_alpine:
 	@echo "INFO: Publish container litmuschaos/experiment-alpine"
