@@ -4,7 +4,14 @@ set -e
 if [ ! -z "${DNAME}" ] && [ ! -z "${DPASS}" ];
 then
   docker login -u "${DNAME}" -p "${DPASS}";
-  docker buildx build . -f Dockerfile --progress plane --push --no-cache --platform linux/amd64,linux/arm64 --tag litmuschaos/experiment-alpine:latest
+  LITMUS_VERSION=$(get_latest_backend_release)
+  docker buildx build . -f Dockerfile --progress plane --push --no-cache --platform linux/amd64,linux/arm64 --build-arg LITMUS_VERSION=${LITMUS_VERSION} --tag litmuschaos/experiment-alpine:latest
 else
   echo "No docker credentials provided. Skip uploading litmuschaos/litmus-checker:latest to docker hub";
 fi;
+
+get_latest_release_version() {
+  curl --silent "https://api.github.com/repos/litmuschaos/test-tools/releases/latest" | # Get latest release from GitHub api
+    grep '"tag_name":' |                                            # Get tag line
+    sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
+}
